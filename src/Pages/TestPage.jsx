@@ -37,7 +37,7 @@ class HomePage extends Component {
             <div className="deck-container">
               <CardDeck className="deck">
                 <GraphCard
-                  title="Recent Edit Size"
+                  title="Jumlah Edit Terbaru"
                   pageLink="recent-edit-size"
                   history={this.state.history}
                   graph={
@@ -48,22 +48,11 @@ class HomePage extends Component {
                     />
                   }
                 />
-                <GraphCard
-                  title="Most Active Users"
-                  pageLink="most-active-users"
-                  history={this.state.history}
-                  graph={
-                    <SimpleBarGraph
-                      paused={false}
-                      fullGraph={false}
-                      settings={MostActiveUsersGraphSettings}
-                    />
-                  }
-                />
               </CardDeck>
+              
               <CardDeck className="deck">
                 <GraphCard
-                  title="Most Active Pages"
+                  title="Halaman Paling Aktif"
                   pageLink="most-active-pages"
                   history={this.state.history}
                   graph={
@@ -76,9 +65,24 @@ class HomePage extends Component {
                 />
               </CardDeck>
 
+              <CardDeck className='deck'>
+              <GraphCard
+                  title="Pengguna Paling Aktif"
+                  pageLink="most-active-users"
+                  history={this.state.history}
+                  graph={
+                    <SimpleBarGraph
+                      paused={false}
+                      fullGraph={false}
+                      settings={MostActiveUsersGraphSettings}
+                    />
+                  }
+                />
+              </CardDeck>
+              
               <CardDeck className="deck">
                 <GraphCard
-                  title="Largest Recent Edits"
+                  title="Suntingan Terbaru Terbesar"
                   pageLink="largest-recent-edits"
                   history={this.state.history}
                   graph={

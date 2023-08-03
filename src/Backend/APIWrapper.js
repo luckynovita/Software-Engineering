@@ -1,7 +1,11 @@
+
+
 const API_ENDPOINT = 'https://www.wikidata.org/w/api.php';
+// export {API_ENDPOINT}
 const SCORING_ENDPOINT = 'https://ores.wikimedia.org/v3/scores/wikidatawiki/';
 const MAX_QUERY_SIZE = 50;
 const NUM_RETRIES = 5;
+
 
 /**
  * @typedef {Object} User
@@ -57,8 +61,8 @@ export const getMostActiveUsers = async () => {
     auactiveusers: '1',
   };
   const users = query(API_ENDPOINT, params, NUM_RETRIES)
-    .then(data => data.query.allusers)
-    .then(users => users.sort(compare));
+  .then(data => data.query.allusers)
+  .then(users => users.sort(compare));
   return users;
 };
 
@@ -171,7 +175,8 @@ export const getRecentActiveUsers = async prevTimestamp => {
   const [recentChanges, newTimestamp] = queryRecentChanges(prevTimestamp);
   const activeUsers = recentChanges.then(activeUsers =>
     countUsers(activeUsers)
-  );
+    );
+  
   return [await activeUsers, newTimestamp];
 };
 
@@ -223,6 +228,7 @@ export const batchQuery = async (itemsKey, items, endpoint, params) => {
  *        last called
  * @returns {(Promise.<RecentChanges[]> | string)[]}
  */
+
 export const queryRecentChanges = prevTimestamp => {
   let tmpTimestamp = new Date();
   const newTimestamp = tmpTimestamp.toISOString();
@@ -232,14 +238,15 @@ export const queryRecentChanges = prevTimestamp => {
     action: 'query',
     format: 'json',
     list: 'recentchanges',
-    rcprop: 'title|ids|timestamp|user|sizes',
+    rcprop: 'title|ids|timestamp|user|sizes|label',
     rclimit: 'max',
     rcstart: tmpTimestamp,
     rcend: prevTimestamp,
   };
   const recentChanges = query(API_ENDPOINT, params, NUM_RETRIES)
-    .then(data => data.query.recentchanges)
-    .then(recentChanges => {
+  .then(data => data.query.recentchanges)
+  .then(recentChanges => {
+      // console.log('recentChanges',recentChanges);
       const revisionIds = recentChanges.map(recentChange => recentChange.revid);
       return getScore(revisionIds).then(scores =>
         recentChanges.map(recentChange => {
@@ -250,7 +257,7 @@ export const queryRecentChanges = prevTimestamp => {
     });
   return [recentChanges, newTimestamp];
 };
-
+// kategori
 /**
  * Returns the groups of each username in the input array
  *

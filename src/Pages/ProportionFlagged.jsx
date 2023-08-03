@@ -8,7 +8,7 @@ export const ProportionFlaggedSettings = {
   refreshTime: 2000,
   refreshMethod: getRecentEditsWithFlags,
   colorFunction: d => d.color,
-  name: 'Proportion Of Edits Flagged',
+  name: 'Proporsi suntingan yang ditandai',
 };
 
 class ProportionFlagged extends Component {
@@ -30,7 +30,7 @@ class ProportionFlagged extends Component {
       <GraphPage
         handlePause={this.handlePause}
         paused={this.state.paused}
-        explanation="The proportion of the last 50 edits that was flagged as potentially damaging."
+        explanation="Proporsi dari 50 suntingan terakhir yang ditandai sebagai berpotensi merusak."
         graph={
           <PieChart
             fullGraph={true}

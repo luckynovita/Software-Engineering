@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+// import './Navbar.css'
 //Creates the Navbar shown on all pages
 
 class NavbarLocal extends Component {
@@ -58,7 +58,7 @@ class NavbarLocal extends Component {
               Feed
             </Nav.Link>
 
-            <a
+            {/* <a
               as={Link}
               target="_blank"
               rel="noopener noreferrer"
@@ -68,7 +68,7 @@ class NavbarLocal extends Component {
               }
             >
               Github Project
-            </a>
+            </a> */}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

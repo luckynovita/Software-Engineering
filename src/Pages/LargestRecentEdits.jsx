@@ -38,8 +38,8 @@ class LargestRecentEdits extends Component {
         paused={this.state.paused}
         explanation={
           <div>
-            {'The largest of the last 500 edits. The number in each of the sections represents the size of the edit in bytes.' +
-              ' Hover over a section to get a preview of the page, or click to open the page in a new tab.'}
+            {' Yang terbesar dari 500 suntingan terakhir. Angka di setiap bagian menunjukkan ukuran suntingan dalam byte.' +
+              ' Arahkan kursor ke bagian untuk melihat pratinjau halaman, atau klik untuk membuka halaman di tab baru.'}
             <p>
               <img
                 className="legend"
@@ -56,7 +56,7 @@ class LargestRecentEdits extends Component {
             paused={this.state.paused}
           />
         }
-        name="Largest Recent Edits"
+        name="Suntingan Terbaru Terbesar"
       />
     );
   }

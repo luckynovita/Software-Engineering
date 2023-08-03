@@ -129,7 +129,7 @@
 
 .infobox {
   float: left;
-  text-align: left;
+  text-align: center;
   padding: 2vmin;
   border-radius: 0 10vmin 0 0;
   border-style: solid;

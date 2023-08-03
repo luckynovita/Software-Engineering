@@ -20,15 +20,27 @@ class HomePage extends Component {
     this.state = { history: this.props.history };
   }
 
+  // function App() {
+  //   const imageStyle = {
+  //     width: '300px',
+  //     height: '200px',
+  //   };
+
   render() {
     return (
       <div className="HomePage">
         <Navbar history={this.state.history} />
         <div className="HomePageContent row margin-right: -15px margin-left: -15px">
           <div className="col-lg-5 col-sm-12">
+            <img
+                // style={imageStyle}
+                className="hero"
+                src={require('../wikidata.png')}
+                alt=""
+            />
             <TitleContainer
               title="Wikidata Live"
-              subtitle="A web app to visualise recent changes to Wikidata in quasi real time."
+              // subtitle="Aplikasi web untuk memvisualisasikan perubahan terbaru pada Wikidata tentang kesehatan secara quasi real time."
             />
           </div>
           <div className="col-lg-7 col-sm-12 homeNav">

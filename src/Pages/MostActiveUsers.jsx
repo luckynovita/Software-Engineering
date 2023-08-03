@@ -8,6 +8,7 @@ export const MostActiveUsersGraphSettings = {
     let [data, newTimestamp] = await getRecentActiveUsers(
       new Date().toISOString()
     );
+
     data = data.slice(0, 50);
     this.setState({
       fullData: data,
@@ -21,6 +22,7 @@ export const MostActiveUsersGraphSettings = {
       this.state.prevTimestamp
     );
     this.setState({ prevTimestamp: newTimestamp });
+    // console.log('data refreshMethod',data);
     data = data.slice(0, 50);
     if (this.state.fullData) {
       const fullData = this.state.fullData;
@@ -117,8 +119,8 @@ class MostActiveUsers extends Component {
         handlePause={this.handlePause}
         paused={this.state.paused}
         explanation={
-          'A live view of the users active right now. The graph shows users active since this page was loaded.' +
-          " Hover over a bar to get a preview of the user's page, or click to open the user's page in a new tab."
+          ' Tampilan langsung dari pengguna yang aktif saat ini. Grafik menunjukkan pengguna aktif sejak halaman ini dimuat.' +
+          ' Arahkan kursor ke bilah untuk mendapatkan pratinjau halaman pengguna.' 
         }
         graph={
           <SimpleBarGraph
@@ -127,7 +129,7 @@ class MostActiveUsers extends Component {
             paused={this.state.paused}
           />
         }
-        name="Most Active Users"
+        name="Pengguna Paling Aktif"
       />
     );
   }

@@ -81,8 +81,8 @@ class MostActivePages extends Component {
         handlePause={this.handlePause}
         paused={this.state.paused}
         explanation={
-          'A live view of the pages being edited right now. The graph shows pages edited since this page was loaded.' +
-          ' Hover over a bar to get a preview of the page, or click to open the page in a new tab.'
+          ' Tampilan langsung dari halaman yang sedang diedit sekarang. Grafik menunjukkan halaman yang diedit sejak halaman ini dimuat.' +
+          ' Arahkan kursor ke bilah untuk mendapatkan pratinjau halaman.'
         }
         graph={
           <SimpleBarGraph
@@ -91,7 +91,7 @@ class MostActivePages extends Component {
             paused={this.state.paused}
           />
         }
-        name="Most Active Pages"
+        name="Halaman Paling Aktif"
       />
     );
   }

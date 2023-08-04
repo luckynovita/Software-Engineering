@@ -63,7 +63,7 @@ async function getDescription(qid) {
 // fungsi membandingkan id yang diedit pengguna dengan id yang ditentukan (filter kategori)
 async function bandingQID(qid) {
   const wdk = require('wikidata-sdk')
-  const searchqid = idSearch ? idSearch.toString() : "Q13442814"
+  const searchqid = idSearch ? idSearch.toString() : "Q13442814" // id yang ditentukan (artikel ilmiah)
   const sparql = `
       ASK { wd:${qid} wdt:P31 wd:${searchqid} . }
   `

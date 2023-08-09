@@ -1,3 +1,4 @@
+import axios from 'axios';
 
 
 const API_ENDPOINT = 'https://www.wikidata.org/w/api.php';
@@ -82,6 +83,18 @@ export const getRecentEditsWithSize = async (idSearch) => {
   return await edits;
 };
 
+// Membandingkan Qid
+export const equalQid = async (self_qid, target_qid) => {
+  const wdk = require('wikidata-sdk')
+  const sparql = `
+        ASK { wd:${self_qid} wdt:P31 wd:${target_qid} . }
+    `
+  const [url, body] = wdk.sparqlQuery(sparql).split('?')
+  const { data } = await axios.post(url, body);
+
+  return data.boolean
+}
+
 export const getRecentEditsWithFlags = async () => {
   const params = {
     action: 'query',
@@ -158,11 +171,23 @@ export const getRecentLargestEdits = async () => {
  *        last called
  * @returns {(Promise.<PageInfo[]> | string)[]}
  */
-export const getMostActivePages = async prevTimestamp => {
+export const getMostActivePages = async (prevTimestamp, qid) => {
   const [recentChanges, newTimestamp] = queryRecentChanges(prevTimestamp);
-  const activePages = recentChanges.then(recentChanges =>
-    countPageOccurances(recentChanges)
-  );
+  const activePages = recentChanges.then(recentChanges => {
+    if (qid) {
+      recentChanges.forEach(item => {
+        equalQid(item.title, qid.toString()).then(res => {
+          item.banding = res
+        })
+      });
+      // console.log(recentChanges);
+      // Membandingkan Qid tidak bisa
+      recentChanges = recentChanges.filter((item) => item.banding)
+      //dapetnya false semua, ada yang true tapi ngga muncul di grafik
+    }
+
+    return countPageOccurances(recentChanges)
+  });
   return [await activePages, newTimestamp];
 };
 

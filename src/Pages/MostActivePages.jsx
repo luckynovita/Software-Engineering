@@ -81,8 +81,21 @@ class MostActivePages extends Component {
         handlePause={this.handlePause}
         paused={this.state.paused}
         explanation={
-          ' Tampilan langsung dari halaman yang sedang diedit sekarang. Grafik menunjukkan halaman yang diedit sejak halaman ini dimuat.' +
-          ' Arahkan kursor ke bilah untuk mendapatkan pratinjau halaman.'
+          <div>
+            <form className='search text-center p-2'>
+              <label htmlFor="" type="text">
+                <input type="search" id="search" className='input' name="search"  placeholder='Cari Item ID..'
+                onChange={(e) => this.setState({idSearch: e.target.value})}
+                />
+              <h5 className='text-blue text-left'>
+              {this.state.label}
+              </h5>
+              </label>
+            </form>
+            {
+            ' Tampilan langsung dari halaman yang sedang diedit sekarang. Grafik menunjukkan halaman yang diedit sejak halaman ini dimuat.' 
+            }
+          </div>
         }
         graph={
           <SimpleBarGraph

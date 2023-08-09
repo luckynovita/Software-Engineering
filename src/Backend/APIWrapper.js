@@ -66,13 +66,15 @@ export const getMostActiveUsers = async () => {
   return users;
 };
 
-export const getRecentEditsWithSize = async () => {
+export const getRecentEditsWithSize = async (idSearch) => {
   const params = {
     action: 'query',
     format: 'json',
     list: 'recentchanges',
     rcprop: 'title|ids|sizes|timestamp',
     rclimit: '500',
+    // title: `wd:${idSearch}`
+    ids: 'id'
   };
   const edits = query(API_ENDPOINT, params, NUM_RETRIES).then(
     result => result.query.recentchanges
@@ -137,7 +139,7 @@ export const getRecentLargestEdits = async () => {
   });
 
   editList.sort((a, b) => b.value - a.value);
-
+  // console.log(editList);
   return editList;
 };
 

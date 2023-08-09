@@ -78,6 +78,7 @@ async function bandingQID(qid) {
 
 
   useEffect(() => {
+    localStorage.setItem("idSearch", idSearch)
     if (idSearch == ""){
       setLabel("")
     }
@@ -90,7 +91,7 @@ async function bandingQID(qid) {
           // Buat bandingkan Qid/item.title dengan Qid yang ditentukan 
           bandingQID(item.title).then(res => {
             // res adalah hasil dari perbandingan tersebut
-            console.log(item)
+            // console.log(item)
             // res tadi yakni hasil dari perbandingan tadi dimasukan kedalam variabel item.banding
             item.banding = res
             // item.banding bernilai true atau false
@@ -124,7 +125,7 @@ async function bandingQID(qid) {
     <h5 className='text-blue text-left'>{label}</h5>
   ), [label]);
 
-  // nampilin value bandingQID
+  // nampilin value bandingQID yang ada di feed dan dashboard sebelah kiri
   return (
     <div>
       <h3 className="text-blue text-left"> Aktivitas Terbaru</h3>

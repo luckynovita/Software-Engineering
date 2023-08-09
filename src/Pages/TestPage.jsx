@@ -19,7 +19,7 @@ class HomePage extends Component {
     super(props);
 
     this.state = {
-      history: this.props.history,
+      history: this.props.history
     };
   }
 

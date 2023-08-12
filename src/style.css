@@ -6,10 +6,17 @@
   --b: #ffffff;
 }
 html{ overflow-y: scroll;}
-body {
-  background-color: #fffffE;
-  /* font-family: 'Poppins', sans-serif; */
-}
+/* label {
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+} */
+
+/* input {
+  height: 20px;
+  flex: 0 0 200px;
+  margin-left: 10px;
+} */
 input {
   border: none;
 }

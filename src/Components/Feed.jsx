@@ -128,19 +128,23 @@ async function bandingQID(qid) {
   // nampilin value bandingQID yang ada di feed dan dashboard sebelah kiri
   return (
     <div>
-      <h3 className="text-blue text-left"> Aktivitas Terbaru</h3>
+      
       <form className='search text-left p-2'>
+        <label className='text-blue'><h6>
+          Instance of: 
+          </h6></label>
         <label htmlFor="" type="text">
-        <input type="search" id="search" className='input' name="search" value={idSearch} onChange={(e) => setIDSearch(e.target.value)} placeholder='Cari Item ID..'/>
+        <input type="search" id="search" className='input' name="search" value={idSearch} onChange={(e) => setIDSearch(e.target.value)} placeholder=' Item ID..'/>
         {renderLabel} 
-        {/* <h6 className='text-blue text-left'>{label}</h6> */}
         </label>
       </form>
-      <form className="text-left p-1" onChange={togglePause}>
+      <form className="text-left p-2" onChange={togglePause}>
         <label>
-          <input type="checkbox" /> Jeda
-        </label> 
+          <input type="checkbox" /> Paused
+        </label>
+        <h3 className="text-blue text-left"> Recent Update</h3> 
       </form>
+      
       
       <ul className="list-group">
         {recentChanges.items.map((item, index) => {
@@ -151,14 +155,13 @@ async function bandingQID(qid) {
                   className={
                     item.scores?.damaging?.score?.prediction ? 'text-red' : ''
                   }>
-                  {`Pengguna ${item.user} aksi ${item.type} pada ${getTimeDifference(item.timestamp)} detik yang lalu`}
+                  {`User ${item.user} action ${item.type} on ${getTimeDifference(item.timestamp)} seconds ago`}
                   <br />
                   {'\nQid = '} {item.title}
                   <br /> 
-                  Judul = {item.label}
+                  Title = {item.label}
                   <br />
-                  Deskripsi = {item.description}
-                 
+                  Description = {item.description}
                 </div>
               </li>
             )

@@ -7,12 +7,78 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SimpleBarGraph from '../Components/SimpleBarGraph';
 import PieChart from '../Components/PieChart';
 import { MostActiveUsersGraphSettings } from './MostActiveUsers';
-import { MostActivePagesGraphSettings } from './MostActivePages';
+// import { MostActivePagesGraphSettings } from './MostActivePages';
 import { LargestRecentEditsSettings } from './LargestRecentEdits';
 import { RecentEditSizeSettings } from './RecentEditSize';
 import { ProportionFlaggedSettings } from './ProportionFlagged';
+import { getMostActivePages } from '../Backend/APIWrapper';
 
 //This is the dashboard page, it shows the feed and all of our graphs
+const MostActivePagesGraphSettings = {
+  getData: async function() {
+    let qid = "Q13442814"
+    if (localStorage.getItem("idSearch") != null) {
+      qid = localStorage.getItem("idSearch")
+    }
+    let [data, newTimestamp] = await getMostActivePages(
+      new Date().toISOString()
+    );
+    data = data.slice(0, 50);
+    this.setState({
+      fullData: data,
+      prevTimestamp: newTimestamp,
+    });
+    return data;
+  },
+  refreshTime: 2000,
+  refreshMethod: async function() {
+    let qid = "Q13442814"
+    if (localStorage.getItem("idSearch") != null) {
+      qid = localStorage.getItem("idSearch")
+    }
+    let [data, newTimestamp] = await getMostActivePages(
+      this.state.prevTimestamp, qid
+    );
+    this.setState({ prevTimestamp: newTimestamp });
+    data = data.slice(0, 50);
+    if (this.state.fullData) {
+      const fullData = this.state.fullData;
+      data.forEach(pageAdditions => {
+        let index = -1;
+        for (let i = 0; i < fullData.length; i += 1) {
+          if (fullData[i].id === pageAdditions.id) {
+            index = i;
+          }
+        }
+        if (index !== -1) {
+          fullData[index].actions += pageAdditions.actions;
+        } else {
+          fullData.push(pageAdditions);
+        }
+      });
+      fullData.sort((a, b) => b.actions - a.actions);
+      fullData.slice(0, 50);
+      const smlData = fullData.slice(0, this.state.fullGraph ? 30 : 10);
+
+      this.setState({ fullData: fullData, data: smlData });
+    } else {
+      const smlData = data.slice(0, this.state.fullGraph ? 30 : 10);
+
+      this.setState({ data: smlData });
+    }
+  },
+  keys: ['actions'],
+  index: 'id',
+  xAxis: 'pages',
+  yAxis: 'actions',
+  colors: 'pastel1',
+  onClick: function(click) {
+    window.open('https://www.wikidata.org/wiki/' + click.indexValue, '_blank');
+  },
+  tooltip: function(click) {
+    return this.tooltip(click, 'https://www.wikidata.org/wiki/');
+  },
+};
 
 class HomePage extends Component {
   constructor(props) {
@@ -37,7 +103,7 @@ class HomePage extends Component {
             <div className="deck-container">
               <CardDeck className="deck">
                 <GraphCard
-                  title="Jumlah Edit Terbaru"
+                  title="Recent Edit Size"
                   pageLink="recent-edit-size"
                   history={this.state.history}
                   graph={
@@ -52,7 +118,7 @@ class HomePage extends Component {
               
               <CardDeck className="deck">
                 <GraphCard
-                  title="Halaman Paling Aktif"
+                  title="Most Active Pages"
                   pageLink="most-active-pages"
                   history={this.state.history}
                   graph={
@@ -67,7 +133,7 @@ class HomePage extends Component {
 
               <CardDeck className='deck'>
               <GraphCard
-                  title="Pengguna Paling Aktif"
+                  title="Most Active Users"
                   pageLink="most-active-users"
                   history={this.state.history}
                   graph={
@@ -82,7 +148,7 @@ class HomePage extends Component {
               
               <CardDeck className="deck">
                 <GraphCard
-                  title="Suntingan Terbaru Terbesar"
+                  title="Largest Recent Edits"
                   pageLink="largest-recent-edits"
                   history={this.state.history}
                   graph={

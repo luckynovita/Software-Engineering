@@ -119,8 +119,7 @@ class MostActiveUsers extends Component {
         handlePause={this.handlePause}
         paused={this.state.paused}
         explanation={
-          ' Tampilan langsung dari pengguna yang aktif saat ini. Grafik menunjukkan pengguna aktif sejak halaman ini dimuat.' +
-          ' Arahkan kursor ke bilah untuk mendapatkan pratinjau halaman pengguna.' 
+          ' A live view of the users active right now. The graph shows users active since this page was loaded.' 
         }
         graph={
           <SimpleBarGraph
@@ -129,7 +128,7 @@ class MostActiveUsers extends Component {
             paused={this.state.paused}
           />
         }
-        name="Pengguna Paling Aktif"
+        name="Most Active Users"
       />
     );
   }

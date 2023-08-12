@@ -140,7 +140,7 @@ class LargestRecentEdits extends Component {
           <div>
             <form className='search text-center p-2'>
               <label htmlFor="" type="text">
-                <input type="search" id="search" className='input' name="search"  placeholder='Cari Item ID..'
+                <input type="search" id="search" className='input' name="search"  placeholder=' Item ID..'
                 onChange={(e) => this.setState({idSearch: e.target.value})}
                 />
               <h5 className='text-blue text-left'>
@@ -148,7 +148,7 @@ class LargestRecentEdits extends Component {
               </h5>
               </label>
             </form>
-            {' Yang terbesar dari 500 suntingan terakhir. Angka di setiap bagian menunjukkan ukuran suntingan dalam byte.'}
+            {' The largest of the last 500 edits. The number in each of the sections represents the size of the edit in bytes.'}
             <p>
               <img
                 className="legend"
@@ -165,7 +165,7 @@ class LargestRecentEdits extends Component {
             paused={this.state.paused}
           />
         }
-        name="Suntingan Terbaru Terbesar"
+        name="Largest Recent Edits"
       />
     );
   }

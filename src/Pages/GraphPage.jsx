@@ -30,7 +30,7 @@ class GraphPage extends Component {
                     name="paused"
                     value={this.props.paused}
                   />{' '}
-                  {'Jeda'}
+                  {'Paused'}
                 </label>
               </form>
             </p>

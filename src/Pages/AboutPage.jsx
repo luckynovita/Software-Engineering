@@ -20,33 +20,82 @@ class AboutPage extends Component {
           <div className="row">
             <div className="col-lg-6 col-sm-12  aboutPageContent">
               <div className="explainContainer text-left">
-                <h3 className="text-blue">Projek Wikidata Live</h3>
+                <h3 className="text-blue">Why we made our project</h3>
                 <p>
-                Sebuah situs web yang akan memvisualisasikan berbagai perubahan pada Wikidata secara kuasi-real-time. Pengguna yang ditargetkan adalah para peneliti dan harus memudahkan untuk mengidentifikasi spam dan suntingan yang salah atau berbahaya pada Wikidata.
+                  We are a group of Computer Science students studying in
+                  Trinity College Dublin. We undertake a module in which we are
+                  given real world projects from a variety of individuals,
+                  researchers and businesses.
+                </p>
+                <p>
+                  Our clients were Fabrizio and Damien who work in the Trinity
+                  ADAPT research center and they tasked us to create a website
+                  that will visualise various changes to Wikidata in
+                  quasi-real-time. Its targeted users are researchers and should
+                  make it easier to identify spam and incorrect or malicious
+                  edits to Wikidata.
                 </p>
               </div>
              
               <div className=" licenseContainer text-left">
-                <h3 className="text-blue">Lisensi</h3>
+              <h3 className="text-blue">Licensing</h3>
                 <p>
-                Kami telah mengasuransikan semua pustaka dan semua lisensi dependensi proyek mencakup penggunaan aplikasi web kami.
+                  We have insured all libraries and all project dependencies
+                  licenses cover our web apps intended use.
                 </p>
                 <p>
-                  Kami telah memutuskan untuk menggunakan{' '}
-                  <a href="https://opensource.org/licenses/MIT">lisensi MIT</a>{' '}
-                  untuk projek ini.
+                  We have decided to use an{' '}
+                  <a href="https://opensource.org/licenses/MIT">MIT license</a>{' '}
+                  for this project.
                 </p>
               </div>
 
               <div className=" licenseContainer text-left">
-                <h3 className="text-green">Kontribusi</h3>
+                <h3 className="text-green">Contributions</h3>
                 <p>
-                Kontribusi yang penulis lakukan adalah menambahkan fitur yang memfokuskan pengguna untuk fokus pada topik spesifik tertentu, dalam hal ini penulis memfokuskan pada Artikel Ilmiah yang merupakan entitas di Wikidata. Pengguna juga dapat mencari Item ID / entitas lain selain Artikel Ilmiah pada Dashbor Wikidata Live ini.
+                The author's contribution is to add features that focus users to focus on certain specific topics, in this case the author focuses on Scientific Articles which are entities in Wikidata. Users can also search for other Item IDs / entities besides Scientific Articles on this Wikidata Live Dashboard.
                 </p>
               </div>
             </div>
             <div className="col-lg-6 col-sm-12 profiles">
-              <h3 className="text-red">Mahasiswa</h3>
+            <div className="client">
+                <h3 className="text-red">Clients</h3>
+                <div className="card-deck">
+                  <div className="card card-profile">
+                    <div className="card-body">
+                      <h5 className="card-title text-center ">Damien Graux</h5>
+                      <div className="text-center">
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="GH aBlack"
+                          href="https://dgraux.github.io/"
+                        >
+                          <FontAwesomeIcon icon={faLink} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="card card-profile">
+                    <div className="card-body">
+                      <h5 className="card-title text-center">
+                        Fabrizio Orlandi
+                      </h5>
+                      <div className="text-center">
+                        <a
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="GH aBlack"
+                          href="https://www.scss.tcd.ie/personnel/orlandif"
+                        >
+                          <FontAwesomeIcon icon={faLink} />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <h3 className="text-red">Students</h3>
               <div className="card-deck  text-center">
                 <div className="card card-profile">
                   <div className="card-body">
@@ -55,9 +104,9 @@ class AboutPage extends Component {
                       <br /> Lynch
                     </h5>
                     <p className="card-text">
-                      <b>Tahun Ke-3 CS</b>
+                      <b>3rd Year CS</b>
                       <br />
-                      Tim Frontend
+                      Frontend Team
                     </p>
                     <div className="text-center">
                       <a
@@ -78,9 +127,9 @@ class AboutPage extends Component {
                       <br /> Mahon
                     </h5>
                     <p className="card-text">
-                      <b>Tahun Ke-3 CS</b>
+                      <b>3rd Year CS</b>
                       <br />
-                      Tim Frontend
+                      Frontend Team
                     </p>
                     <div className="text-center">
                       <a
@@ -101,9 +150,9 @@ class AboutPage extends Component {
                       <br /> Mullen
                     </h5>
                     <p className="card-text">
-                      <b>Tahun Ke-3 CSB</b>
+                      <b>3rd Year CSB</b>
                       <br />
-                      Tim Backend
+                      Backend Team
                     </p>
                     <div className="text-center">
                       <a
@@ -126,9 +175,9 @@ class AboutPage extends Component {
                       <br /> Mahon
                     </h5>
                     <p className="card-text">
-                      <b>Tahun Ke-2 CS</b>
+                      <b>2nd Year CS</b>
                       <br />
-                      Tim Frontend
+                      Frontend Team
                     </p>
                     <div className="text-center">
                       <a
@@ -149,9 +198,9 @@ class AboutPage extends Component {
                       <br /> Molnar
                     </h5>
                     <p className="card-text">
-                      <b>Tahun Ke-2 CSB</b>
+                      <b>2nd Year CSB</b>
                       <br />
-                      Tim Frontend
+                      Frontend Team
                     </p>
                     <div className="text-center">
                       <a
@@ -172,9 +221,9 @@ class AboutPage extends Component {
                       <br /> Mantiquilla
                     </h5>
                     <p className="card-text">
-                      <b>Tahun Ke-2 CS</b>
+                      <b>2nd Year CS</b>
                       <br />
-                      Tim Backend
+                      Backend Team
                     </p>
                     <div className="text-center">
                       <a
@@ -191,7 +240,7 @@ class AboutPage extends Component {
               </div>
               <br />
               <div className="contributor">
-                <h3 className="text-red">Kontributor</h3>
+                <h3 className="text-red">Contributor</h3>
                 <div className="card-deck">
                   <div className="card card-profile">
                     <div className="card-body">

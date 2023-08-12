@@ -138,7 +138,7 @@ class RecentEditSize extends Component {
           <div>
             <form className='search text-center p-2'>
               <label htmlFor="" type="text">
-                <input type="search" id="search" className='input' name="search"  placeholder='Cari Item ID..'
+                <input type="search" id="search" className='input' name="search"  placeholder=' Item ID..'
                 onChange={(e) => this.setState({idSearch: e.target.value})}
                 />
               <h5 className='text-blue text-left'>
@@ -146,7 +146,7 @@ class RecentEditSize extends Component {
               </h5>
               </label>
             </form>
-            {'30 suntingan terakhir. Angka di setiap bagian mewakili ukuran suntingan dalam byte.'}
+            {'The size of the last 30 edits. The number in each of the sections represents the size of the edit in bytes.'}
             
             <p>
               <img
@@ -164,7 +164,7 @@ class RecentEditSize extends Component {
             paused={this.state.paused}
           />
         }
-        name="Jumlah Edit Terbaru"
+        name="Recent Edit Size"
       />
     );
   }

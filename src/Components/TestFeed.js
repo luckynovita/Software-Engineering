@@ -9,10 +9,10 @@ class Feed extends React.Component {
   render() {
     return (
       <>
-        <h3 className="text-blue">Aktivitas Terbaru</h3>
+        <h3 className="text-blue">Recent Activities</h3>
         <ul className="list-group">
           <li className="list-group-item list-group-item">
-            Pengguna 1 (membuat 5 menit yang lalu) halaman TCD yang diedit 10 detik yang lalu item waktu nama pengguna
+          User 1 (created 5 minutes ago) edited TCD page 10 seconds ago time item username
           </li>
         </ul>
       </>

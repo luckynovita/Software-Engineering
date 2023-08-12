@@ -171,23 +171,9 @@ export const getRecentLargestEdits = async () => {
  *        last called
  * @returns {(Promise.<PageInfo[]> | string)[]}
  */
-export const getMostActivePages = async (prevTimestamp, qid) => {
+export const getMostActivePages = async (prevTimestamp) => {
   const [recentChanges, newTimestamp] = queryRecentChanges(prevTimestamp);
-  const activePages = recentChanges.then(recentChanges => {
-    if (qid) {
-      recentChanges.forEach(item => {
-        equalQid(item.title, qid.toString()).then(res => {
-          item.banding = res
-        })
-      });
-      // console.log(recentChanges);
-      // Membandingkan Qid tidak bisa
-      recentChanges = recentChanges.filter((item) => item.banding)
-      //dapetnya false semua, ada yang true tapi ngga muncul di grafik
-    }
-
-    return countPageOccurances(recentChanges)
-  });
+  const activePages = recentChanges.then(recentChanges => countPageOccurances(recentChanges));
   return [await activePages, newTimestamp];
 };
 
